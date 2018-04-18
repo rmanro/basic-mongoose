@@ -93,4 +93,11 @@ describe('Band API', () => {
                 assert.deepEqual(body, { removed: false });
             });
     });
+
+    it('404 - GET on a bad ID', () => {
+        return request.get(`/bands/${band1._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+            });
+    });
 });
