@@ -72,4 +72,11 @@ describe('Band API', () => {
                 assert.deepEqual(body, [band1, band2].map(getFields));
             });
     });
+
+    it('GET - queries by name', () => {
+        return request.get('/bands?name=Ought')
+            .then(({ body }) => {
+                assert.deepEqual(body, [band2].map(getFields));
+            });
+    });
 });
