@@ -1,8 +1,8 @@
 {
   "name": "basic-mongoose",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CRUD API using ExpressJS and Mongoose",
+  "main": "server.js",
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
