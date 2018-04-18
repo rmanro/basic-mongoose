@@ -79,4 +79,18 @@ describe('Band API', () => {
                 assert.deepEqual(body, [band2].map(getFields));
             });
     });
+
+    it('DELETE - a band', () => {
+        return request.delete(`/bands/${band1._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, { removed: true });
+            });
+    });
+
+    it('DELETE - try to delete a band already deleted', () => {
+        return request.delete(`/bands/${band1._id}`)
+            .then(({ body }) => {
+                assert.deepEqual(body, { removed: false });
+            });
+    });
 });
