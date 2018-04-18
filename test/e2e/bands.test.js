@@ -63,4 +63,13 @@ describe('Band API', () => {
                 assert.deepEqual(updated, band1);
             });
     });
+
+    const getFields = ({ _id, name, location }) => ({ _id, name, location });
+
+    it('GET - all bands but list only with ID, Name, and Location', () => {
+        return request.get('/bands')
+            .then(({ body }) => {
+                assert.deepEqual(body, [band1, band2].map(getFields));
+            });
+    });
 });
