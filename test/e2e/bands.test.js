@@ -11,7 +11,7 @@ describe('Band API', () => {
         name: 'Shame',
         location: {
             city: 'London',
-            country: 'England'
+            country: 'UK'
         },
         albums: ['Songs of Praise']
     };
@@ -47,6 +47,20 @@ describe('Band API', () => {
             })
             .then(({ body }) => {
                 assert.deepEqual(body, band2);
+            });
+    });
+
+    it('PUT - update a band', () => {
+        band1.location.country = 'England';
+
+        return request.put(`/bands/${band1._id}`)
+            .send(band1)
+            .then(({ body }) => {
+                assert.deepEqual(body, band1);
+                return Band.findById(band1._id).then(roundTrip);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, band1);
             });
     });
 });
