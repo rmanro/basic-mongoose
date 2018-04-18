@@ -36,4 +36,17 @@ describe('Band API', () => {
                 band1 = body;
             });
     });
+
+    const roundTrip = doc => JSON.parse(JSON.stringify(doc.toJSON()));
+
+    it('GET - band by ID', () => {
+        return Band.create(band2).then(roundTrip)
+            .then(saved => {
+                band2 = saved;
+                return request.get(`/bands/${band2._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, band2);
+            });
+    });
 });
