@@ -1,11 +1,11 @@
 {
   "name": "basic-mongoose",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CRUD API using ExpressJS and Mongoose",
+  "main": "server.js",
   "scripts": {
-    "lint": "",
-    "pretest": "",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
     "test:mocha": "mocha  --recursive",
     "test": "npm run test:mocha",
     "test:unit": "mocha test/unit",
